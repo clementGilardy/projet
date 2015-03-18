@@ -24,6 +24,21 @@ public class Application extends HttpServlet {
 	protected void service(HttpServletRequest req, HttpServletResponse rep)
 			throws ServletException, IOException {
 		req.setAttribute("personnes", service.getDao().getAll());
+		String action = req.getParameter("action");
+		
+		if(action != null && action.equals("supp"))
+		{
+			String id = req.getParameter("id");
+			if(id != null && !id.isEmpty())
+			{
+				if(id.matches("\\d"))
+				{
+					service.deleteOne(Integer.parseInt(id));
+				}
+			}
+		}
+		
+		
 		getServletContext().getRequestDispatcher(urlList).forward(req, rep);
 	}
 

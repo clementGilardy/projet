@@ -5,24 +5,30 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" href="css/bootstrap.min.css">
 <title>Insert title here</title>
 </head>
 <body>
+<div class="col-sm-12 text-center">	
 	<h1>Liste des acteurs</h1>
-	<table>
-		<tr>
-			<th>id</th>
-			<th>Nom</th>
-			<th>Année de naissance</th>
-		</tr>
-		<c:forEach var="p" items="${personnes}">
+	<div class="col-sm-6 text-center col-sm-offset-3">
+		<table class="table table-striped">
 			<tr>
-				<td><c:out value="${p.id}"/></td>
-				<td><c:out value="${p.prenom}"/> <c:out value="${p.nom}"/></td>
-				<td><c:out value="${p.anneeNaissance}"/></td>
-				<td><a href="<c:url value="?action=supp&id=${p.id}"/>">Supprimer</a></td>
+				<th class="text-center">id</th>
+				<th class="text-center">Nom</th>
+				<th class="text-center">Année de naissance</th>
+				<th class="text-center">Action</th>
 			</tr>
-		</c:forEach>
-	</table>
+			<c:forEach var="p" items="${personnes}">
+				<tr>
+					<td><c:out value="${p.id}"/></td>
+					<td><c:out value="${p.prenom}"/> <c:out value="${p.nom}"/></td>
+					<td><c:out value="${p.anneeNaissance}"/></td>
+					<td><a href="<c:url value="?action=supp&id=${p.id}"/>">Supprimer</a></td>
+				</tr>
+			</c:forEach>
+		</table>
+	</div>
+</div>
 </body>
 </html>
